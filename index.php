@@ -8,8 +8,10 @@
 <title>CRUD PHP JS</title>
 </head>
 <body>
-    
-<span id="conteudo"></span>
+<div class="container">
+    <h2 class="mt-4 mb-4">Listar Usuários</h2>
+    <span id="conteudo"></span>
+</div>   
 
 <script>
     $(document).ready(function(){

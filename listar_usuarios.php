@@ -5,7 +5,8 @@ $sql = "SELECT * FROM usuarios ORDER BY id DESC";
 $resultado = mysqli_query($conn, $sql);
 ?>
 
-<table class="table table-bordered table-striped">
+<?php if($resultado && $resultado->num_rows != 0): ?>
+    <table class="table table-bordered table-striped table-hover">
     <thead>
         <tr>
         <th>ID</th>
@@ -15,21 +16,21 @@ $resultado = mysqli_query($conn, $sql);
     </thead>
     <tbody>
 
-<?php 
-if($resultado && $resultado->num_rows != 0):
-    while($row_usuario = mysqli_fetch_assoc($resultado)):
-?>
-
+    <?php while($row_usuario = mysqli_fetch_assoc($resultado)): ?>
     <tr>
-        <th> <?php echo $row_usuario['id'];    ?></th>
+        <td> <?php echo $row_usuario['id'];    ?></td>
         <td> <?php echo ucwords($row_usuario['name']);  ?></td>
         <td> <?php echo $row_usuario['email']; ?></td>
     </tr>
 
 <?php 
     endwhile;
+else: 
+    echo "<div class='alert alert-warning' role='alert'>Nenhum usuário cadastrado!</div>";
 endif; 
+
 ?>
+
 
 </tbody>
 </table>

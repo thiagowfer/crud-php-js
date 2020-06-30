@@ -14,11 +14,24 @@
 </div>   
 
 <script>
+    var pagina = 1; // página inicial
+    var qtd_result_pagina = 10; // quantidade de registro por página
+    
     $(document).ready(function(){
+        listarUsuario(pagina, qtd_result_pagina);
+    });
+
+    function listarUsuario(pagina, qtd_result_pagina){
+        var dados = {
+            pagina: pagina,
+            qtd_result_pagina: qtd_result_pagina
+        }
+
         $.post('listar_usuarios.php', function(retorna){
             $("#conteudo").html(retorna);
         });
-    });
+    }
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js">
 </script>
